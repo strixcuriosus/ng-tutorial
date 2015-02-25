@@ -1,10 +1,10 @@
-<html>
-<head>
-    <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script src="js/myapp.js"></script>
-</head>
-<body>
-
-</body>
+<html ng-app>
+    <head>
+        <title> {{appName}} </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="js/myapp.js"></script>
+    </head>
+    <body>
+        <input type="text" placeholder="Give me a name" ng-model="appName">
+    </body>
 </html>
