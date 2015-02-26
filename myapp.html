@@ -3,22 +3,38 @@
         <title> {{appName}} </title>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
         <script src="js/myapp.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="myapp.css">
     </head>
     <body>
-        <input type="text" placeholder="Give me a name" ng-model="appName">
-        <div>
-            <b>I'm outside of the controller's domain</b>
-            <ul>
-                <li> I can't access the variables on the controller's $scope: {{headerInfo.title || 'nope'}}. </li>
-                <li> But since I'm inside of the ng-app I can still access the $rootScope: {{appName}}. </li>
-            </ul>
+        <div class="container">
+            <input type="text" placeholder="Give me a name" ng-model="appName">
+            <div>
+                <b>I'm outside of the controller's domain</b>
+                <ul>
+                    <li> I can't access the variables on the controller's $scope: {{headerInfo.title || 'nope'}}. </li>
+                    <li> But since I'm inside of the ng-app I can still access the $rootScope: {{appName}}. </li>
+                </ul>
+            </div>
+            <div ng-controller="firstController">
+                <b> I'm inside of the controller's domain </b>
+                <ul>
+                    <li> I have access to the variables on my controller's $scope: {{headerInfo.title || 'nope'}}. </li>
+                    <li> I can still reference the $rootScope here: {{appName}} </li>
+                </ul>
+                <div class="row"><b> {{headerInfo.title}} </b></div>
+                <div class="row" ng-repeat="repo in repos">
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-default" ng-click="likeRepo(repo)">
+                            <span class="glyphicon glyphicon-star" ng-class="{liked: repo.liked}"></span> {{repo.stars}} Stars
+                        </button>
+                    </div>
+                    <div class="col-md-3">{{repo.name}}</div>
+                    <div class="col-md-3"> {{repo.user}}</div>
+
+                </div>
+            </div>
         </div>
-        <div ng-controller="firstController">
-            <b> I'm inside of the controller's domain </b>
-            <ul>
-                <li> I have access to the variables on my controller's $scope: {{headerInfo.title || 'nope'}}. </li>
-                <li> I can still reference the $rootScope here: {{appName}} </li>
-            </ul>
-        </div>
+
     </body>
 </html>
