@@ -9,15 +9,24 @@ app.controller('firstController', function($http, $scope){
 
     $scope.likeRepo = function(repo){
         repo.liked = !repo.liked;
+        if (repo.liked) {
+            repo.stars++;
+        } else {
+            repo.stars--;
+        }
     };
 
-    $http.get('https://api.github.com/search/repositories?q=hello+world')
-    .success(handleRepoList);
+    $scope.fetchRepoList = function(querystring) {
+        $http.get('https://api.github.com/search/repositories?sort=stars&q=' + querystring)
+        .success(handleRepoList);
+    };
 
     function handleRepoList(data){
         $scope.repos = data.items.map(formatRepo).sort(function(a, b){
             return b.stars - a.stars;
         });
+        $scope.headerInfo.count = data.total_count;
+        $scope.headerInfo.title = $scope.repoKeyword;
     }
 
     function formatRepo(repo){

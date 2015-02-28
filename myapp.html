@@ -22,7 +22,19 @@
                     <li> I have access to the variables on my controller's $scope: {{headerInfo.title || 'nope'}}. </li>
                     <li> I can still reference the $rootScope here: {{appName}} </li>
                 </ul>
-                <div class="row"><b> {{headerInfo.title}} </b></div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p>Search for github repos by keyword:</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" ng-model="repoKeyword">
+                        <button type="button" class="btn btn-default pull-right" ng-click="fetchRepoList(headerInfo.title)"> Search</button>
+                    </div>
+
+                </div>
+                <div class="row"><b> Showing the top {{repos.length}} of {{headerInfo.count}} repos that matched your search for {{headerInfo.title}} </b></div>
                 <div class="row" ng-repeat="repo in repos">
                     <div class="col-md-3">
                         <button type="button" class="btn btn-default" ng-click="likeRepo(repo)">
