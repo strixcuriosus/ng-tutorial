@@ -16,10 +16,12 @@ app.controller('firstController', function($http, $scope){
         }
     };
 
-    $scope.fetchRepoList = function(querystring) {
-        $http.get('https://api.github.com/search/repositories?sort=stars&q=' + querystring)
+    $scope.fetchRepoList = _.debounce(fetchRepoList, 500);
+
+    function fetchRepoList() {
+        $http.get('https://api.github.com/search/repositories?sort=stars&q=' + $scope.repoKeyword)
         .success(handleRepoList);
-    };
+    }
 
     function handleRepoList(data){
         $scope.repos = data.items.map(formatRepo).sort(function(a, b){
@@ -35,6 +37,7 @@ app.controller('firstController', function($http, $scope){
                 'user': repo.owner.login,
                 'stars': parseInt(repo.stargazers_count, 10),
                 'liked': false
-            };
+               };
     }
 });
+
