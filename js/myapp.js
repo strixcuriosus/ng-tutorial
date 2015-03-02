@@ -1,4 +1,4 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['myApp.filters']);
 
 app.run(function($rootScope){
     $rootScope.appName = '';
