@@ -1,0 +1,1 @@
+var filters = angular.module('myApp.filters', []);
