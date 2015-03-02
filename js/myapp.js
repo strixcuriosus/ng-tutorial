@@ -16,13 +16,15 @@ app.controller('firstController', function($http, $scope){
         }
     };
 
-    $scope.fetchRepoList = function(querystring) {
+    $scope.fetchRepoList = _.debounce(fetchRepoList, 500);
+
+    function fetchRepoList() {
         get_config = { 'params': {
-            'q': querystring,
+            'q':  $scope.repoKeyword,
         } };
         $http.get('https://api.github.com/search/repositories', get_config)
         .success(handleRepoList);
-    };
+    }
 
     function handleRepoList(data, status, header, config){
         $scope.repos = data.items.map(formatRepo).sort(function(a, b){
@@ -38,6 +40,7 @@ app.controller('firstController', function($http, $scope){
                 'user': repo.owner.login,
                 'stars': parseInt(repo.stargazers_count, 10),
                 'liked': false
-            };
+               };
     }
 });
+
