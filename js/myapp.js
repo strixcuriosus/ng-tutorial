@@ -4,7 +4,7 @@ app.run(function($rootScope){
     $rootScope.appName = 'Hello World';
 });
 
-app.controller('firstController', function($http, $scope){
+app.controller('firstController', function($scope, githubService){
     $scope.headerInfo = {'title': 'RepoList', 'count': 0};
 
     $scope.likeRepo = function(repo){
@@ -19,25 +19,11 @@ app.controller('firstController', function($http, $scope){
     $scope.fetchRepoList = _.debounce(fetchRepoList, 500);
 
     function fetchRepoList() {
-        $http.get('https://api.github.com/search/repositories?sort=stars&q=' + $scope.repoKeyword)
-        .success(handleRepoList);
-    }
-
-    function handleRepoList(data){
-        $scope.repos = data.items.map(formatRepo).sort(function(a, b){
-            return b.stars - a.stars;
+        githubService.search($scope.repoKeyword).then(function(data){
+            $scope.headerInfo.title = $scope.repoKeyword;
+            $scope.headerInfo.count = data.totalCount;
+            $scope.repos = data.repos;
         });
-        $scope.headerInfo.count = data.total_count;
-        $scope.headerInfo.title = $scope.repoKeyword;
-    }
-
-    function formatRepo(repo){
-        return {'name': repo.name,
-                'description': repo.description,
-                'user': repo.owner.login,
-                'stars': parseInt(repo.stargazers_count, 10),
-                'liked': false
-               };
     }
 });
 
