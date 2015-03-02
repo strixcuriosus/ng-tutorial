@@ -26,7 +26,7 @@ app.controller('firstController', function($http, $scope){
         .success(handleRepoList);
     }
 
-    function handleRepoList(data, status, header, config){
+    function handleRepoList(data){
         $scope.repos = data.items.map(formatRepo).sort(function(a, b){
             return b.stars - a.stars;
         });
@@ -43,4 +43,3 @@ app.controller('firstController', function($http, $scope){
                };
     }
 });
-
