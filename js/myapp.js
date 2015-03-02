@@ -17,11 +17,14 @@ app.controller('firstController', function($http, $scope){
     };
 
     $scope.fetchRepoList = function(querystring) {
-        $http.get('https://api.github.com/search/repositories?sort=stars&q=' + querystring)
+        get_config = { 'params': {
+            'q': querystring,
+        } };
+        $http.get('https://api.github.com/search/repositories', get_config)
         .success(handleRepoList);
     };
 
-    function handleRepoList(data){
+    function handleRepoList(data, status, header, config){
         $scope.repos = data.items.map(formatRepo).sort(function(a, b){
             return b.stars - a.stars;
         });
