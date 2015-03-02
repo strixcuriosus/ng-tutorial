@@ -1,0 +1,7 @@
+<div class="col-md-3">
+    <button type="button" class="btn btn-default" ng-click="likeRepo(repo)">
+        <span class="glyphicon glyphicon-star" ng-class="{liked: repo.liked}"></span> {{repo.stars}} Stars
+    </button>
+</div>
+<div class="col-md-3">{{repo.name}}</div>
+<div class="col-md-3"> {{repo.user}}</div>
