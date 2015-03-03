@@ -9,28 +9,23 @@
     </head>
     <body>
         <div class="container">
+            <input type="text" placeholder="Name this app" ng-model="appName">
+            <div>
+                <b> outside of the controller's domain</b>
+                <ul>
+                    <li> CAN: access the $rootscope. Here comes appName: {{appName}}. </li>
+                    <li> CAN'T: access firstController's $scope:  {{controllerVariable || 'nope'}}. </li>
+                </ul>
+            </div>
             <div ng-controller="firstController">
-                <div class="row">
-                    <div class="col-md-3">
-                        <p>Search for github repos by keyword:</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <input type="text" ng-model="repoKeyword" ng-keypress="fetchRepoList()">
-                        <button type="button" class="btn btn-default pull-right" ng-click="fetchRepoList()"> Search </button>
-                    </div>
-                </div>
-                <div class="row"><b> Showing the top {{repos.length}} of {{headerInfo.count}} repos that matched your search for {{headerInfo.title}} </b></div>
-                <div class="row" ng-repeat="repo in repos">
-                    <div class="col-md-3">
-                        <button type="button" class="btn btn-default" ng-click="likeRepo(repo)">
-                            <span class="glyphicon glyphicon-star" ng-class="{liked: repo.liked}"></span> {{repo.stars}} Stars
-                        </button>
-                    </div>
-                    <div class="col-md-3">{{repo.name}}</div>
-                    <div class="col-md-3"> {{repo.user}}</div>
-                </div>
+                <b> inside of the controller's domain </b>
+                <ul>
+                    <li> CAN: access the $rootscope. Here comes appName: {{appName}}. </li>
+                    <li> CAN: access firstController's $scope:  {{controllerVariable || 'nope'}}. </li>
+                    <li> Let's try to change $rootscope:
+                        <input type="text" ng-model="appName">
+                    </li>
+                </ul>
             </div>
         </div>
     </body>
