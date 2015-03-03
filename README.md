@@ -27,6 +27,25 @@ git checkout data-binding
 * Everything that's under `ng-controller="firstController"` can access firstController's `$scope`
 * Watch out: a controller can create its own `$scope` variable after it's initialized, and ignore the one on its parent!
 
+## RepoFetcher App
+```bash
+git checkout master
+```
+* Here's an example app that fetches and lists info about github repositories
+* If we continue putting all of our code inside of the controller and our main template `myapp.html`, it will be difficult to share components with other apps or controllers. Let's modularize!
+
+## services
+```bash
+git checkout custom-services-0
+```
+* Services are a way of encapsulating similar functionalities that can be shared throughout our app. Here, we'll make a service that handles getting and formatting the data we want from github
+* We can then inject this service into multiple controllers (and even into other services)
+* We could also include other formatting methods and request-handling specific to github in this service
+* Services can also be used to share data between controllers, even when those controllers don't share a common parent controller
+```bash
+git checkout custom-services
+```
+
 ## directives
 
 ```bash
