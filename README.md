@@ -14,7 +14,7 @@ In your browser, go to [http://localhost:8000/myapp.html](http://localhost:8000/
 * It's the only `$scope` that has `$scope.$parent = null`
 * The `.run()` block executes before any `.controller()` calls or directive `compile` or `link` functions
 * The `.run()` block can be used to set up global event listeners, e.g. for routing and authentication handling
-* `.config()` blocks allow custom service configurations, e.g. setting API keys
+* `.config()` blocks on the main app's module allow custom service configurations, e.g. setting API keys, base API urls, or http header and cookie names to be used throughout the application.
 
 
 ## data-binding 
@@ -31,4 +31,16 @@ git checkout data-binding
 
 ```bash
 git checkout directives
+```
+
+## filters
+```bash
+git checkout custom-filters-0
+```
+* Filters, such as `currency` and `number` can be used on individual items within expressions
+  `{{ 12.21 | currency }}` `{{ 11235 | number:3 }}`
+* We can make separate modules for custom features and inject these modules into the main app's module (and then we can easily re-use these modules in other apps!)
+* Filters can be applied with `ng-repeat` across a collection of items
+```bash
+git checkout custom-filters
 ```
