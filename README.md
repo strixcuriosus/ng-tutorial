@@ -10,9 +10,12 @@ npm start
 In your browser, go to [http://localhost:8000/myapp.html](http://localhost:8000/myapp.html)
 
 ##  Boilerplate
-
-* $rootscope is available everywhere in you app
+* $rootscope is available everywhere in your app
 * It's the only `$scope` that has `$scope.$parent = null`
+* The `.run()` block executes before any `.controller()` calls or directive `compile` or `link` functions
+* The `.run()` block can be used to set up global event listeners, e.g. for routing and authentication handling
+* `.config()` blocks allow custom service configurations, e.g. setting API keys
+
 
 ## data-binding 
 
