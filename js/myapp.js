@@ -43,4 +43,3 @@ app.controller('firstController', function($http, $scope){
                };
     }
 });
-
