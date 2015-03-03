@@ -1,4 +1,4 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['myApp.directives']);
 
 app.run(function($rootScope){
     $rootScope.appName = '';
@@ -6,15 +6,6 @@ app.run(function($rootScope){
 
 app.controller('firstController', function($http, $scope){
     $scope.headerInfo = {'title': 'RepoList', 'count': 0};
-
-    $scope.likeRepo = function(repo){
-        repo.liked = !repo.liked;
-        if (repo.liked) {
-            repo.stars++;
-        } else {
-            repo.stars--;
-        }
-    };
 
     $scope.fetchRepoList = _.debounce(fetchRepoList, 500);
 
