@@ -1,7 +1,7 @@
 var app = angular.module('myApp', []);
 
 app.run(function($rootScope){
-    $rootScope.appName = 'Hello World';
+    $rootScope.appName = '';
 });
 
 app.controller('firstController', function($http, $scope){

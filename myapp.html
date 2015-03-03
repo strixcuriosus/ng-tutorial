@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="container">
-            <input type="text" placeholder="Give me a name" ng-model="appName">
+            <input type="text" placeholder="Name this app" ng-model="appName">
             <div>
                 <b>I'm outside of the controller's domain</b>
                 <ul>
@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <input type="text" ng-model="repoKeyword" ng-keypress="fetchRepoList()">
-                        <button type="button" class="btn btn-default pull-right" ng-click="fetchRepoList()"> Search</button>
+                        <button type="button" class="btn btn-default pull-right" ng-click="fetchRepoList()"> Search </button>
                     </div>
                 </div>
                 <div class="row"><b> Showing the top {{repos.length}} of {{headerInfo.count}} repos that matched your search for {{headerInfo.title}} </b></div>
