@@ -9,20 +9,7 @@
     </head>
     <body>
         <div class="container">
-            <input type="text" placeholder="Name this app" ng-model="appName">
-            <div>
-                <b>I'm outside of the controller's domain</b>
-                <ul>
-                    <li> I can't access the variables on the controller's $scope: {{headerInfo.title || 'nope'}}. </li>
-                    <li> But since I'm inside of the ng-app I can still access the $rootScope: {{appName}}. </li>
-                </ul>
-            </div>
             <div ng-controller="firstController">
-                <b> I'm inside of the controller's domain </b>
-                <ul>
-                    <li> I have access to the variables on my controller's $scope: {{headerInfo.title || 'nope'}}. </li>
-                    <li> I can still reference the $rootScope here: {{appName}} </li>
-                </ul>
                 <div class="row">
                     <div class="col-md-3">
                         <p>Search for github repos by keyword:</p>
