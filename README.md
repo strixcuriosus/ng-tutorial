@@ -30,8 +30,19 @@ git checkout data-binding
 ## directives
 
 ```bash
-git checkout directives
+git checkout directives-0
 ```
+See [https://docs.angularjs.org/guide/directive](https://docs.angularjs.org/guide/directive)  
+
+* Activated with an element name, an attribute name, and/or a class name. See 
+* Scope can:
+  * Prototypally inherit from the context $scope
+  * Be a copy of the context $scope
+  * Be isolated, with `scope: { ... }`
+* Use the link function for all interactions with the element.
+
+Good read on directives $scope: [https://github.com/angular/angular.js/wiki/Understanding-Scopes#summary](https://github.com/angular/angular.js/wiki/Understanding-Scopes#summary)
+
 
 ## filters
 ```bash
